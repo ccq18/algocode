@@ -1,6 +1,10 @@
 package algo.graph;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 
 /**
@@ -9,7 +13,8 @@ import java.util.Queue;
  */
 public class Graph {
     private int v;
-    private LinkedList<Integer> adj[]; // 邻接表
+    private LinkedList<Integer>[] adj; // 邻接表
+
 
     public Graph(int v) {
         this.v = v;
@@ -69,7 +74,7 @@ public class Graph {
     }
 
     boolean found = false; // 全局变量或者类成员变量
-
+    // 深度优先搜索
     public void dfs(int s, int t) {
         found = false;
         boolean[] visited = new boolean[v];
@@ -81,6 +86,7 @@ public class Graph {
         print(prev, s, t);
     }
 
+    // 利用回溯的思想来实现深度遍历
     private void recurDfs(int w, int t, boolean[] visited, int[] prev) {
         if (found == true) return;
         visited[w] = true;
@@ -96,6 +102,24 @@ public class Graph {
             }
         }
     }
+
+//    private Map<Integer, Boolean> marked = new HashMap<>(); // 已扫过
+//    public  List<Integer> pathTo(Integer v) {
+//        int source = 0;
+//        if(!this.hasPathTo(v)) {
+//            return null;
+//        }
+//        List<Integer> paths = new ArrayList<>();
+//        for (int i = v; i!= source;i = this.adj[i]) {
+//            paths.add(i);
+//        }
+//        paths.add(source);
+//        return paths;
+//    }
+//
+//    public Boolean hasPathTo(Integer v) {
+//        return this.marked[v];
+//    }
 }
 
 
