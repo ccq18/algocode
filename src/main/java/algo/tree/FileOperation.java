@@ -50,6 +50,8 @@ public class FileOperation {
          * 简单分词
          * 这个分词方式相对简陋，没有考虑很多文本处理中的特殊问题
          * 这里只做demo展示用
+         *
+         * 查找字母位置 直到不是字母算一个词，所有结果加入words
          */
         if (scanner.hasNextLine()) {
             String contents = scanner.useDelimiter("\\A").next();

@@ -8,9 +8,7 @@ import java.util.ArrayList;
 public class BST<K extends Comparable<K>, V> {
 
     private class Node {
-
         K key;
-
         V value;
 
         Node left, right;
@@ -176,8 +174,6 @@ public class BST<K extends Comparable<K>, V> {
                 size--;
                 return leftNode;
             }
-
-
               /*待删除结点左右子树为空的情况
                 找到比待删除结点大的最小结点，即待删除结点右子树的最小结点
                 用这个结点顶替待删除结点的位置
@@ -193,17 +189,14 @@ public class BST<K extends Comparable<K>, V> {
         }
     }
 
-
     public boolean contains(K key) {
         return getNode(root, key) != null;
     }
-
 
     public V get(K key) {
         Node node = getNode(root, key);
         return node == null ? null : node.value;
     }
-
 
     public void set(K key, V newValue) {
         Node node = getNode(root, key);
@@ -214,36 +207,11 @@ public class BST<K extends Comparable<K>, V> {
         node.value = newValue;
     }
 
-
     public int getSize() {
         return size;
     }
 
-
     public boolean isEmpty() {
         return size == 0;
-    }
-
-    public static void main(String[] args) {
-
-        System.out.println("傲慢与偏见");
-
-        ArrayList<String> words = new ArrayList<>();
-        if (FileOperation.readFile("pride-and-prejudice.txt", words)) {
-            System.out.println("共有单词数：" + words.size());
-
-            BST<String, Integer> bst = new BST<>();
-            for (String word : words) {
-                if (bst.contains(word)) {
-                    bst.set(word, bst.get(word) + 1);
-                } else {
-                    bst.add(word, 1);
-                }
-            }
-
-            System.out.println("共有不同单词数：" + bst.getSize());
-            System.out.println("出现pride的次数: " + bst.get("pride"));
-            System.out.println("出现prejudice的次数: " + bst.get("prejudice"));
-        }
     }
 }

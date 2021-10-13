@@ -320,26 +320,4 @@ public class RBTree<K extends Comparable<K>, V> {
         return size == 0;
     }
 
-    public static void main(String[] args) {
-
-        System.out.println("傲慢与偏见");
-
-        ArrayList<String> words = new ArrayList<>();
-        if (FileOperation.readFile("pride-and-prejudice.txt", words)) {
-            System.out.println("共有单词数：" + words.size());
-
-            RBTree<String, Integer> rbTree = new RBTree<>();
-            for (String word : words) {
-                if (rbTree.contains(word)) {
-                    rbTree.set(word, rbTree.get(word) + 1);
-                } else {
-                    rbTree.add(word, 1);
-                }
-            }
-
-            System.out.println("共有不同单词数：" + rbTree.getSize());
-            System.out.println("出现pride的次数: " + rbTree.get("pride"));
-            System.out.println("出现prejudice的次数: " + rbTree.get("prejudice"));
-        }
-    }
 }
